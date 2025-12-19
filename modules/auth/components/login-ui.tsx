@@ -19,7 +19,7 @@ export function LoginUI() {
     await signIn.social(
       {
         provider: "github",
-        callbackURL: "/dashboard",
+        callbackURL: "/",
       },
       {
         onRequest: () => {
