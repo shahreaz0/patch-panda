@@ -1,6 +1,7 @@
 "use client"
 
-import { GithubLogoIcon, SpinnerIcon } from "@phosphor-icons/react"
+import { GithubLogoIcon } from "@phosphor-icons/react/dist/csr/GithubLogo"
+import { SpinnerIcon } from "@phosphor-icons/react/dist/csr/Spinner"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {

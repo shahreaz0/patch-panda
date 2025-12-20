@@ -1,7 +1,9 @@
 "use client"
 
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"
-import { CaretDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react"
+import { CaretDownIcon } from "@phosphor-icons/react/dist/csr/CaretDown"
+import { CheckIcon } from "@phosphor-icons/react/dist/csr/Check"
+import { XIcon } from "@phosphor-icons/react/dist/csr/X"
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import {

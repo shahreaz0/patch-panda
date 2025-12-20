@@ -4,7 +4,8 @@ import * as React from "react"
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react"
+import { CaretRightIcon } from "@phosphor-icons/react/dist/csr/CaretRight"
+import { CheckIcon } from "@phosphor-icons/react/dist/csr/Check"
 
 function ContextMenu({
   ...props

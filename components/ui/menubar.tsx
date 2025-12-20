@@ -4,7 +4,8 @@ import * as React from "react"
 import { Menubar as MenubarPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { CheckIcon, CaretRightIcon } from "@phosphor-icons/react"
+import { CheckIcon } from "@phosphor-icons/react/dist/csr/Check"
+import { CaretRightIcon } from "@phosphor-icons/react/dist/csr/CaretRight"
 
 function Menubar({
   className,

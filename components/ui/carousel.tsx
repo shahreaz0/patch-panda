@@ -7,7 +7,8 @@ import useEmblaCarousel, {
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react"
+import { CaretLeftIcon } from "@phosphor-icons/react/dist/csr/CaretLeft"
+import { CaretRightIcon } from "@phosphor-icons/react/dist/csr/CaretRight"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

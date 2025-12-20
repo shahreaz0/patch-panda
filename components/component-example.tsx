@@ -1,33 +1,31 @@
 "use client"
 
-import {
-  BellIcon,
-  CodeIcon,
-  CreditCardIcon,
-  DotsThreeOutlineIcon,
-  DotsThreeVerticalIcon,
-  DownloadIcon,
-  EnvelopeIcon,
-  EyeIcon,
-  FileIcon,
-  FileTextIcon,
-  FloppyDiskIcon,
-  FolderIcon,
-  FolderOpenIcon,
-  GearIcon,
-  KeyboardIcon,
-  LayoutIcon,
-  MagnifyingGlassIcon,
-  MonitorIcon,
-  MoonIcon,
-  PaletteIcon,
-  QuestionIcon,
-  ShieldIcon,
-  SignOutIcon,
-  SunIcon,
-  TranslateIcon,
-  UserIcon,
-} from "@phosphor-icons/react"
+import { BellIcon } from "@phosphor-icons/react/dist/csr/Bell"
+import { CodeIcon } from "@phosphor-icons/react/dist/csr/Code"
+import { CreditCardIcon } from "@phosphor-icons/react/dist/csr/CreditCard"
+import { DotsThreeOutlineIcon } from "@phosphor-icons/react/dist/csr/DotsThreeOutline"
+import { DotsThreeVerticalIcon } from "@phosphor-icons/react/dist/csr/DotsThreeVertical"
+import { DownloadIcon } from "@phosphor-icons/react/dist/csr/Download"
+import { EnvelopeIcon } from "@phosphor-icons/react/dist/csr/Envelope"
+import { EyeIcon } from "@phosphor-icons/react/dist/csr/Eye"
+import { FileIcon } from "@phosphor-icons/react/dist/csr/File"
+import { FileTextIcon } from "@phosphor-icons/react/dist/csr/FileText"
+import { FloppyDiskIcon } from "@phosphor-icons/react/dist/csr/FloppyDisk"
+import { FolderIcon } from "@phosphor-icons/react/dist/csr/Folder"
+import { FolderOpenIcon } from "@phosphor-icons/react/dist/csr/FolderOpen"
+import { GearIcon } from "@phosphor-icons/react/dist/csr/Gear"
+import { KeyboardIcon } from "@phosphor-icons/react/dist/csr/Keyboard"
+import { LayoutIcon } from "@phosphor-icons/react/dist/csr/Layout"
+import { MagnifyingGlassIcon } from "@phosphor-icons/react/dist/csr/MagnifyingGlass"
+import { MonitorIcon } from "@phosphor-icons/react/dist/csr/Monitor"
+import { MoonIcon } from "@phosphor-icons/react/dist/csr/Moon"
+import { PaletteIcon } from "@phosphor-icons/react/dist/csr/Palette"
+import { QuestionIcon } from "@phosphor-icons/react/dist/csr/Question"
+import { ShieldIcon } from "@phosphor-icons/react/dist/csr/Shield"
+import { SignOutIcon } from "@phosphor-icons/react/dist/csr/SignOut"
+import { SunIcon } from "@phosphor-icons/react/dist/csr/Sun"
+import { TranslateIcon } from "@phosphor-icons/react/dist/csr/Translate"
+import { UserIcon } from "@phosphor-icons/react/dist/csr/User"
 import * as React from "react"
 import { Example, ExampleWrapper } from "@/components/example"
 import {

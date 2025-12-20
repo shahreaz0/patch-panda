@@ -1,6 +1,8 @@
 "use client"
 
-import { EyeClosedIcon, EyeIcon, LockIcon } from "@phosphor-icons/react"
+import { EyeIcon } from "@phosphor-icons/react/dist/csr/Eye"
+import { EyeClosedIcon } from "@phosphor-icons/react/dist/csr/EyeClosed"
+import { LockIcon } from "@phosphor-icons/react/dist/csr/Lock"
 import { useState } from "react"
 import {
   InputGroup,
