@@ -36,6 +36,7 @@
     "react-dom": "19.1.0",
     "react-error-boundary": "^6.0.0",
     "react-hook-form": "^7.68.0",
+    "react-hotkeys-hook": "^5.2.1",
     "react-resizable-panels": "^4.0.9",
     "recharts": "2.15.4",
     "shadcn": "^3.6.2",

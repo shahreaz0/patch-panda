@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
+import { ThemeToggle } from "./theme-toggle"
 
 function titleCase(segment: string) {
   return decodeURIComponent(segment)
@@ -27,40 +28,47 @@ export default function DashboardHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b bg-background flex h-12 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
-      <div className="flex items-center gap-2 px-4">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" />
+      <div className="flex items-center justify-between px-4 w-full">
+        <div className="flex items-center gap-2">
+          <SidebarTrigger className="-ml-1" />
 
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem className="hidden md:block">
-              {rest.length === 0 ? (
-                <BreadcrumbPage>Dashboard</BreadcrumbPage>
-              ) : (
-                <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-              )}
-            </BreadcrumbItem>
+          <Separator orientation="vertical" />
 
-            {rest.map((seg, idx) => {
-              const href = `/${["dashboard", ...rest.slice(0, idx + 1)].join("/")}`
-              const label = titleCase(seg)
-              const isLast = idx === rest.length - 1
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem className="hidden md:block">
+                {rest.length === 0 ? (
+                  <BreadcrumbPage>Dashboard</BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
 
-              return (
-                <React.Fragment key={href}>
-                  <BreadcrumbSeparator className="hidden md:block" />
-                  <BreadcrumbItem>
-                    {isLast ? (
-                      <BreadcrumbPage>{label}</BreadcrumbPage>
-                    ) : (
-                      <BreadcrumbLink href={href}>{label}</BreadcrumbLink>
-                    )}
-                  </BreadcrumbItem>
-                </React.Fragment>
-              )
-            })}
-          </BreadcrumbList>
-        </Breadcrumb>
+              {rest.map((seg, idx) => {
+                const href = `/${["dashboard", ...rest.slice(0, idx + 1)].join("/")}`
+                const label = titleCase(seg)
+                const isLast = idx === rest.length - 1
+
+                return (
+                  <React.Fragment key={href}>
+                    <BreadcrumbSeparator className="hidden md:block" />
+                    <BreadcrumbItem>
+                      {isLast ? (
+                        <BreadcrumbPage>{label}</BreadcrumbPage>
+                      ) : (
+                        <BreadcrumbLink href={href}>{label}</BreadcrumbLink>
+                      )}
+                    </BreadcrumbItem>
+                  </React.Fragment>
+                )
+              })}
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+
+        <div>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   )
