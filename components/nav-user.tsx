@@ -4,6 +4,7 @@ import { CaretUpDownIcon } from "@phosphor-icons/react/dist/csr/CaretUpDown"
 import { SealCheckIcon } from "@phosphor-icons/react/dist/csr/SealCheck"
 import { SignOutIcon } from "@phosphor-icons/react/dist/csr/SignOut"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
@@ -20,7 +21,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { useSession } from "@/lib/auth-client"
+import { signOut, useSession } from "@/lib/auth-client"
 import { generateAvatarUrl } from "@/lib/utils"
 import { Skeleton } from "./ui/skeleton"
 
@@ -40,13 +41,22 @@ export function UserInfoSkeleton() {
 export function NavUser() {
   const { isMobile } = useSidebar()
 
+  const router = useRouter()
   const { data: session } = useSession()
 
   if (!session) return <UserInfoSkeleton />
 
   const user = session.user
 
-  function logoutHandler() {}
+  function logoutHandler() {
+    signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/login")
+        },
+      },
+    })
+  }
 
   return (
     <SidebarMenu>
@@ -116,7 +126,7 @@ export function NavUser() {
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={logoutHandler}>
               <SignOutIcon />
-              Log out
+              Sign out
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
