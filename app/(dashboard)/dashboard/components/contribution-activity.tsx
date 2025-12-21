@@ -25,7 +25,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-export function ContributionActivity() {
+export async function ContributionActivity() {
   return (
     <Card>
       <CardHeader>
@@ -39,8 +39,6 @@ export function ContributionActivity() {
             light: ["#e5e7eb", "#10b981"],
             dark: ["#374151", "#10b981"],
           }}
-
-          //   style={{ width: "100%", maxWidth: "100%", height: "auto" }}
         />
       </CardContent>
     </Card>

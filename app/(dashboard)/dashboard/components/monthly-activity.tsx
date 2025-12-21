@@ -1,9 +1,8 @@
 "use client"
 
 import { TrendUpIcon } from "@phosphor-icons/react"
-
+import { useEffect, useState } from "react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-
 import {
   Card,
   CardContent,
@@ -18,8 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-
-export const description = "A multiple bar chart"
+import { MonthlyActivitySkeleton } from "./monthly-activity-skeleton"
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -48,6 +46,18 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function MonthlyActivity() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const loading = false
+
+  if (!mounted || loading) {
+    return <MonthlyActivitySkeleton />
+  }
+
   return (
     <Card>
       <CardHeader>

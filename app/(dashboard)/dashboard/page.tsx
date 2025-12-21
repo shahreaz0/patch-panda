@@ -1,13 +1,15 @@
 import { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
+import { requireAuth } from "@/lib/auth-utils"
 import { ContributionActivity } from "./components/contribution-activity"
 import { ContributionActivitySkeleton } from "./components/contribution-activity-skeleton"
 import { MonthlyActivity } from "./components/monthly-activity"
-import { MonthlyActivitySkeleton } from "./components/monthly-activity-skeleton"
 import { SectionCardsSkeleton } from "./components/stat-skeleton"
 import { SectionCards } from "./components/stats"
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  await requireAuth()
+
   return (
     <main className="container mx-auto space-y-4">
       <ErrorBoundary fallback={<div>Something went wrong</div>}>
@@ -16,11 +18,7 @@ export default function DashboardPage() {
         </Suspense>
       </ErrorBoundary>
 
-      <ErrorBoundary fallback={<div>Something went wrong</div>}>
-        <Suspense fallback={<MonthlyActivitySkeleton />}>
-          <MonthlyActivity />
-        </Suspense>
-      </ErrorBoundary>
+      <MonthlyActivity />
 
       <ErrorBoundary fallback={<div>Something went wrong</div>}>
         <Suspense fallback={<ContributionActivitySkeleton />}>

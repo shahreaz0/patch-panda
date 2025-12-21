@@ -16,13 +16,11 @@ export async function SectionCards() {
         <CardHeader>
           <CardDescription>Connected Repositories</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {stats.connectedRepos}
+            {stats.totalConnectedRepos}
           </CardTitle>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="text-muted-foreground">
-            Visitors for the last 6 months
-          </div>
+          <div className="text-muted-foreground">Across all organizations</div>
         </CardFooter>
       </Card>
       <Card>
@@ -33,9 +31,7 @@ export async function SectionCards() {
           </CardTitle>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="text-muted-foreground">
-            Acquisition needs attention
-          </div>
+          <div className="text-muted-foreground">In the current year</div>
         </CardFooter>
       </Card>
       <Card>
@@ -46,7 +42,9 @@ export async function SectionCards() {
           </CardTitle>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="text-muted-foreground">Engagement exceed targets</div>
+          <div className="text-muted-foreground">
+            Created in the current year
+          </div>
         </CardFooter>
       </Card>
       <Card>
@@ -57,7 +55,9 @@ export async function SectionCards() {
           </CardTitle>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
-          <div className="text-muted-foreground">Meets growth projections</div>
+          <div className="text-muted-foreground">
+            Completed in the current year
+          </div>
         </CardFooter>
       </Card>
     </div>
