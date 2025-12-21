@@ -1,7 +1,6 @@
 "use client"
 
-import { TrendUpIcon } from "@phosphor-icons/react"
-import { useEffect, useState } from "react"
+import { use } from "react"
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 import {
   Card,
@@ -17,59 +16,46 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-import { MonthlyActivitySkeleton } from "./monthly-activity-skeleton"
-
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-  { month: "July", desktop: 214, mobile: 140 },
-  { month: "August", desktop: 214, mobile: 140 },
-  { month: "September", desktop: 214, mobile: 140 },
-  { month: "October", desktop: 214, mobile: 140 },
-  { month: "November", desktop: 214, mobile: 140 },
-  { month: "December", desktop: 214, mobile: 140 },
-]
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
+  commits: {
+    label: "Commits",
     color: "var(--chart-1)",
   },
-  mobile: {
-    label: "Mobile",
+  prs: {
+    label: "Pull Requests",
     color: "var(--chart-2)",
   },
 } satisfies ChartConfig
 
-export function MonthlyActivity() {
-  const [mounted, setMounted] = useState(false)
+export type MonthlyActivityData = {
+  subtitle: string
+  stats: {
+    month: string
+    commits: number
+    prs: number
+  }[]
+}
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  const loading = false
-
-  if (!mounted || loading) {
-    return <MonthlyActivitySkeleton />
-  }
+export function MonthlyActivity({
+  dataPromise,
+}: {
+  dataPromise: Promise<MonthlyActivityData>
+}) {
+  const data = use(dataPromise)
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>Monthly Activity</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardDescription>{data.subtitle}</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer
           config={chartConfig}
           className="aspect-auto h-[200px] w-full"
         >
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart accessibilityLayer data={data.stats}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="month"
@@ -82,17 +68,14 @@ export function MonthlyActivity() {
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" />
+            <Bar dataKey="commits" fill="var(--color-commits)" />
+            <Bar dataKey="prs" fill="var(--color-prs)" />
           </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 leading-none font-medium">
-          Trending up by 5.2% this month <TrendUpIcon className="h-4 w-4" />
-        </div>
         <div className="text-muted-foreground leading-none">
-          Showing total visitors for the last 6 months
+          Showing total commits and pull requests for the last 12 months
         </div>
       </CardFooter>
     </Card>

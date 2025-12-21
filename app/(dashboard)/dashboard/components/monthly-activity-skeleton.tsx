@@ -21,7 +21,6 @@ export function MonthlyActivitySkeleton() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2">
         <Skeleton className="h-4 w-60" />
-        <Skeleton className="h-4 w-40" />
       </CardFooter>
     </Card>
   )

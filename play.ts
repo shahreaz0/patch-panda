@@ -1,5 +1,4 @@
 import { headers } from "next/headers"
-import { Octokit } from "octokit"
 import { auth } from "@/lib/auth"
 
 export async function getOctokit() {
@@ -17,9 +16,3 @@ export async function getOctokit() {
     console.log(error)
   }
 }
-
-const octokit = await getOctokit()
-
-// const res = octokit?.rest.users.getAuthenticated()
-
-// console.log(res)
