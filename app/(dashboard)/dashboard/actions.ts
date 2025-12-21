@@ -75,9 +75,11 @@ function getLast12Months() {
 }
 
 export async function getLast12MonthsActivity() {
-  const months = getLast12Months()
+  "use cache: private"
+
   const octokit = await getOctokit()
   const user = await getAuthenticatedUser()
+  const months = getLast12Months()
 
   const query = `
     query ($login: String!) {
@@ -146,6 +148,8 @@ function getContributionLevel(count: number): 0 | 1 | 2 | 3 | 4 {
 }
 
 export async function getUserContributionsHeatmap() {
+  "use cache: private"
+
   const octokit = await getOctokit()
   const user = await getAuthenticatedUser()
 

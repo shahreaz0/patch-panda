@@ -1,6 +1,5 @@
 import { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
-import { requireAuth } from "@/lib/auth-utils"
 import { getLast12MonthsActivity } from "./actions"
 import { ContributionActivity } from "./components/contribution-activity"
 import { ContributionActivitySkeleton } from "./components/contribution-activity-skeleton"
@@ -10,13 +9,7 @@ import { SectionCardsSkeleton } from "./components/stat-skeleton"
 import { SectionCards } from "./components/stats"
 
 export default async function DashboardPage() {
-  await requireAuth()
-
-  console.time("DashboardPage")
-
   const promise = getLast12MonthsActivity()
-
-  console.timeEnd("DashboardPage")
 
   return (
     <main className="container mx-auto space-y-4">
