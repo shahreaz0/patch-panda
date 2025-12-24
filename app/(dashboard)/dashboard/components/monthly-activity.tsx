@@ -37,12 +37,12 @@ export type MonthlyActivityData = {
   }[]
 }
 
-export function MonthlyActivity({
-  dataPromise,
-}: {
-  dataPromise: Promise<MonthlyActivityData>
-}) {
-  const data = use(dataPromise)
+type Props = {
+  last12MonthsActivityPromise: Promise<MonthlyActivityData>
+}
+
+export function MonthlyActivity(props: Props) {
+  const data = use(props.last12MonthsActivityPromise)
 
   return (
     <Card>

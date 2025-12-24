@@ -9,7 +9,7 @@ import { SectionCardsSkeleton } from "./components/stat-skeleton"
 import { SectionCards } from "./components/stats"
 
 export default async function DashboardPage() {
-  const promise = getLast12MonthsActivity()
+  const last12MonthsActivityPromise = getLast12MonthsActivity()
 
   return (
     <main className="container mx-auto space-y-4">
@@ -20,7 +20,9 @@ export default async function DashboardPage() {
       </ErrorBoundary>
 
       <Suspense fallback={<MonthlyActivitySkeleton />}>
-        <MonthlyActivity dataPromise={promise} />
+        <MonthlyActivity
+          last12MonthsActivityPromise={last12MonthsActivityPromise}
+        />
       </Suspense>
 
       <ErrorBoundary fallback={<div>Something went wrong</div>}>
