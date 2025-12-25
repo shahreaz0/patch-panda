@@ -27,5 +27,8 @@ export async function getRepositories({
     sort: "updated",
   })
 
-  return data.items
+  return {
+    items: data.items,
+    totalCount: data.total_count,
+  }
 }

@@ -12,12 +12,12 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import type { getRepositories } from "../actions"
 
 type Props = {
-  repository: Awaited<ReturnType<typeof getRepositories>>[number]
+  repository: Awaited<ReturnType<typeof getRepositories>>["items"][number]
 }
 
 export function RepositoryListItem({ repository }: Props) {
   return (
-    <Card className="hover:bg-accent/50 transition-colors">
+    <Card className="hover:bg-accent/50 transition-colors min-h-[135px]">
       <CardHeader className="flex items-center gap-2">
         {repository.private ? (
           <LockIcon className="size-4 text-muted-foreground" />
