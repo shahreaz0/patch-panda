@@ -1,7 +1,7 @@
 "use client"
 
 import { MagnifyingGlassIcon } from "@phosphor-icons/react"
-import { useEffect, useState } from "react"
+import { debounce } from "nuqs"
 import {
   InputGroup,
   InputGroupAddon,
@@ -15,36 +15,31 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Spinner } from "@/components/ui/spinner"
-import { useDebounce } from "@/hooks/use-debounce"
 import { useRepositorySearchParams } from "../repository-search-params"
 
 export function RepositoryFilters() {
   const { repositorySearchParams, setRepositorySearchParams, isLoading } =
     useRepositorySearchParams()
-  const [search, setSearch] = useState(repositorySearchParams.q)
-  const debouncedSearch = useDebounce(search, 500)
-
-  useEffect(() => {
-    if (debouncedSearch !== repositorySearchParams.q) {
-      setRepositorySearchParams({
-        ...repositorySearchParams,
-        q: debouncedSearch,
-        page: 1,
-      })
-    }
-  }, [debouncedSearch, repositorySearchParams, setRepositorySearchParams])
-
-  useEffect(() => {
-    setSearch(repositorySearchParams.q)
-  }, [repositorySearchParams.q])
 
   return (
     <div className="flex gap-4 mb-6">
       <InputGroup className="max-w-sm">
         <InputGroupInput
           placeholder="Search repositories..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={repositorySearchParams.q}
+          onChange={(e) => {
+            setRepositorySearchParams(
+              (prev) => ({
+                ...prev,
+                q: e.target.value,
+                page: 1,
+              }),
+              {
+                limitUrlUpdates:
+                  e.target.value === "" ? undefined : debounce(500),
+              },
+            )
+          }}
         />
 
         <InputGroupAddon align="inline-end">
